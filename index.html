@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clothes, Fabrics & Patterns — B1 Trainer</title>
+<style>
+:root{
+  --navy:#172b50;--teal:#008e95;--yellow:#ffd45a;
+  --purple:#7661b9;--bg:#f3f7fc;--white:#fff;
+  --muted:#5e6c7e;--green:#137c52;--red:#bb3851;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--navy);
+font-family:Arial,Helvetica,sans-serif;line-height:1.55}
+header{background:linear-gradient(125deg,#172b50,#285b85);
+color:white;padding:36px 20px}
+.wrap{max-width:940px;margin:auto;padding:0 18px}
+header h1{font-size:clamp(29px,5vw,49px);margin:8px 0}
+header p{color:#dbeaf5}
+.tag{color:#ffe084;font-weight:bold;letter-spacing:1px}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0}
+button,select{font:inherit}
+button{border:0;border-radius:11px;padding:11px 16px;
+cursor:pointer;background:var(--teal);color:white;font-weight:bold}
+button:hover{filter:brightness(.94)}
+button.secondary{background:#e7edf7;color:var(--navy)}
+button.yellow{background:var(--yellow);color:var(--navy)}
+nav button.active{background:var(--navy);color:white}
+section{display:none}
+section.active{display:block}
+.card{background:white;border:1px solid #dbe5ef;border-radius:18px;
+padding:22px;margin:18px 0;box-shadow:0 3px 14px #203b6010}
+h2{font-size:28px;margin:10px 0}
+h3{margin:0 0 10px}
+.sub{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.tile{background:white;border:1px solid #dce6ef;border-radius:15px;
+overflow:hidden}
+.tile .inside{padding:13px}
+.swatch{height:105px;background-color:#90b5c3}
+.plain{background:#8cb7c7}
+.striped{background:repeating-linear-gradient(105deg,#fff 0 13px,#3a75a5 13px 26px)}
+.checked{background-color:#f4e4dc;
+background-image:linear-gradient(90deg,#b87980 12%,transparent 12%,transparent 46%,#b87980 46%,#b87980 58%,transparent 58%),
+linear-gradient(#b87980 12%,transparent 12%,transparent 46%,#b87980 46%,#b87980 58%,transparent 58%);
+background-size:46px 46px;opacity:.9}
+.dots{background-color:#c6b3db;
+background-image:radial-gradient(#684e91 18%,transparent 20%);
+background-size:28px 28px}
+.floral{background:#bfe1d2;
+background-image:radial-gradient(circle at 20px 20px,#fff 0 7px,transparent 8px),
+radial-gradient(circle at 20px 20px,#f1a35e 0 3px,transparent 4px);
+background-size:45px 45px}
+.patterned{background-color:#ead69b;
+background-image:repeating-linear-gradient(45deg,transparent 0 16px,#9c7aab 17px 20px,transparent 21px 35px)}
+.cotton{background:#e8e6dc;background-image:repeating-linear-gradient(45deg,#ffffff70 0 2px,transparent 2px 6px)}
+.wool{background:#b5aaa1;background-image:repeating-linear-gradient(120deg,#eee0d2 0 3px,#a3948a 3px 9px)}
+.leather{background:linear-gradient(140deg,#754b35,#3e281e 45%,#916d50)}
+.denim{background:repeating-linear-gradient(115deg,#517ca7 0 3px,#7197bb 3px 6px)}
+.linen{background:#d9c7a5;background-image:repeating-linear-gradient(90deg,#ffffff35 0 1px,transparent 1px 5px)}
+.silk{background:linear-gradient(120deg,#9acdc8,#e2f4ed 35%,#86b7b6 65%,#c5e7e3)}
+.ru{color:var(--muted);font-size:14px}
+.example{font-size:14px;margin-top:7px}
+.notice{background:#e9e5fa;border-left:5px solid var(--purple);
+padding:15px;border-radius:10px;margin:16px 0}
+.question{padding:17px 0;border-bottom:1px solid #e7edf4}
+.question:last-child{border:0}
+.options{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.option{background:#edf3f8;color:var(--navy);border:2px solid transparent}
+.option.chosen{border-color:var(--teal);background:#d7f1f0}
+.option.correct{background:#d9f4e5;border-color:#1b9b63}
+.option.wrong{background:#ffe1e6;border-color:#d65268}
+.feedback{font-size:14px;margin-top:8px;font-weight:bold}
+.good{color:var(--green)}.bad{color:var(--red)}
+select{max-width:100%;border:2px solid #c7d8e6;border-radius:8px;
+padding:6px 9px;background:white;color:var(--navy);margin:3px}
+.reading{background:#f7f8ff;border-left:5px solid var(--teal);
+padding:19px;border-radius:12px;font-size:17px}
+.sentence{margin:14px 0}
+.progress{height:12px;background:#dbe5ed;border-radius:20px;overflow:hidden}
+.bar{height:100%;background:var(--teal);width:0;transition:.3s}
+.bigscore{font-size:48px;font-weight:bold;color:var(--teal)}
+footer{text-align:center;color:var(--muted);padding:30px}
+@media(max-width:500px){.card{padding:16px}.options button{width:100%}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="tag">UNIT 02 • VOCABULARY BOOSTER • A2+ → B1</div>
+<h1>What Does It Look Like?</h1>
+<p>Clothes • Fabrics • Patterns • Style</p>
+<p>Learn useful English. Practise it. Check your answers.</p>
+</div>
+</header>
+
+<main class="wrap">
+<nav id="nav"></nav>
+<div class="card">
+<div style="display:flex;justify-content:space-between;gap:12px">
+<strong>Your progress</strong><span id="progressText">0 / 0</span>
+</div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+</div>
+<div id="sections"></div>
+</main>
+<footer>English Vocabulary Trainer • Unit 2 Shops</footer>
+
+<script>
+const patterns=[
+["plain","однотонный, без рисунка","a plain blue T-shirt","plain"],
+["striped","в полоску","a striped shirt","striped"],
+["checked","в клетку","a checked shirt","checked"],
+["polka-dot","в горошек","a polka-dot dress","dots"],
+["floral","с цветочным рисунком","a floral skirt","floral"],
+["patterned","с узором","a patterned top","patterned"]
+];
+const materials=[
+["cotton","хлопок","a cotton T-shirt","cotton"],
+["wool","шерсть","a wool jumper","wool"],
+["leather","кожа","a leather jacket","leather"],
+["denim","джинсовая ткань","denim jeans","denim"],
+["linen","лён","a linen shirt","linen"],
+["silk","шёлк","a silk scarf","silk"]
+];
+const styles=[
+["loose","свободный","These trousers are loose."],
+["tight","тесный, обтягивающий","These jeans are too tight."],
+["oversized","нарочито большой","I like oversized hoodies."],
+["fitted","приталенный","It's a fitted jacket."],
+["casual","повседневный","I usually wear casual clothes."],
+["smart","элегантный, аккуратный","You look smart."],
+["comfortable","удобный","These shoes are comfortable."],
+["fashionable","модный","That's a fashionable jacket."],
+["old-fashioned","старомодный","This style looks old-fashioned."],
+["long-sleeved","с длинным рукавом","a long-sleeved shirt"],
+["short-sleeved","с коротким рукавом","a short-sleeved T-shirt"]
+];
+const tabs=[
+["patterns","01 Patterns"],
+["materials","02 Materials"],
+["style","03 Fit & Style"],
+["verbs","04 Useful Verbs"],
+["reading","05 Reading"],
+["review","06 Final Review"]
+];
+let answers={},checked={},revealed={};
+
+function el(tag,cls,text){
+ const x=document.createElement(tag);
+ if(cls)x.className=cls;
+ if(text!==undefined)x.textContent=text;
+ return x;
+}
+function esc(s){
+ return String(s).replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ })[c]);
+}
+function showTab(id){
+ document.querySelectorAll("main section").forEach(s=>s.classList.toggle("active",s.id===id));
+ document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.id===id));
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function makeCard(title,html){
+ return `<div class="card"><h2>${title}</h2>${html}</div>`;
+}
+function vocabularyTiles(items){
+ return `<div class="grid">${items.map((x,i)=>`
+ <div class="tile">
+ <div class="swatch ${x[3]}"></div>
+ <div class="inside">
+ <strong>${esc(x[0])}</strong><div class="ru">${esc(x[1])}</div>
+ <div class="example">${esc(x[2])}</div>
+ </div></div>`).join("")}</div>`;
+}
+function makeQuiz(id,title,items){
+ return `<div class="card"><h2>${title}</h2>
+ <p class="sub">Choose one answer. Then click Check.</p>
+ ${items.map((q,i)=>`
+ <div class="question" id="${id}_${i}">
+ <strong>${i+1}. ${esc(q.q)}</strong>
+ <div class="options">${q.opts.map((o,j)=>`
+ <button class="option" data-q="${id}_${i}" data-val="${j}"
+ onclick="choose('${id}_${i}',${j})">${esc(o)}</button>`).join("")}</div>
+ <div class="feedback" id="f_${id}_${i}"></div>
+ </div>`).join("")}
+ <p><button onclick="checkQuiz('${id}')">Check answers ✓</button>
+ <button class="secondary" onclick="resetQuiz('${id}')">Try again</button></p>
+ <div id="result_${id}"></div></div>`;
+}
+const quizzes={
+p:[
+{q:"Which pattern has lines?",opts:["floral","striped","plain"],a:1},
+{q:"Which pattern has squares?",opts:["checked","polka-dot","striped"],a:0},
+{q:"Which word means 'однотонный'?",opts:["patterned","plain","checked"],a:1},
+{q:"A dress with small round spots is ...",opts:["polka-dot","floral","plain"],a:0},
+{q:"A shirt with flowers is ...",opts:["striped","floral","checked"],a:1},
+{q:"A top with a design or repeated shapes is ...",opts:["plain","patterned","cotton"],a:1}
+],
+m:[
+{q:"A T-shirt made of хлопок is ...",opts:["cotton","leather","wool"],a:0},
+{q:"Which material is commonly used for jeans?",opts:["silk","denim","linen"],a:1},
+{q:"A warm knitted jumper is often made of ...",opts:["wool","silk","leather"],a:0},
+{q:"Which material comes from flax?",opts:["denim","linen","wool"],a:1},
+{q:"A shiny, smooth scarf may be made of ...",opts:["silk","cotton","denim"],a:0},
+{q:"A jacket made of кожа is ...",opts:["linen","leather","cotton"],a:1}
+],
+s:[
+{q:"These trousers are too small around the waist. They're ...",opts:["loose","tight","smart"],a:1},
+{q:"A hoodie deliberately much larger than your usual size is ...",opts:["fitted","oversized","short-sleeved"],a:1},
+{q:"For an interview, I want to look ...",opts:["smart","floral","tight"],a:0},
+{q:"I usually wear jeans and a hoodie. My style is ...",opts:["casual","formal","silk"],a:0},
+{q:"A shirt with sleeves covering your arms is ...",opts:["short-sleeved","long-sleeved","fitted"],a:1},
+{q:"Clothes that were popular a long time ago but seem out of date are ...",opts:["fashionable","comfortable","old-fashioned"],a:2},
+{q:"A jacket shaped closely to the body is ...",opts:["fitted","loose","oversized"],a:0},
+{q:"Shoes that feel good on your feet are ...",opts:["checked","comfortable","floral"],a:1}
+],
+v:[
+{q:"This shirt doesn't ___ me. It's too small.",opts:["suit","fit","look"],a:1},
+{q:"That colour really ___ you.",opts:["suits","fits","wears"],a:0},
+{q:"You ___ very smart in that jacket.",opts:["wear","look","fit"],a:1},
+{q:"I usually ___ jeans to college.",opts:["wear","suit","fit"],a:0},
+{q:"Can I ___ this coat before buying it?",opts:["try on","wear on","fit on"],a:0},
+{q:"My T-shirt is ___ cotton.",opts:["made from of","made of","got"],a:1},
+{q:"It's ___ a striped pattern.",opts:["got","made","wear"],a:0},
+{q:"These jeans are too tight. They don't ___ me.",opts:["suit","look","fit"],a:2}
+],
+r:[
+{q:"Who is going to listen to Leo's presentation?",opts:["Local employers","Primary school pupils","Shop assistants"],a:0},
+{q:"Why doesn't the checked shirt fit well?",opts:["It's too expensive","The sleeves are too long","It's made of wool"],a:1},
+{q:"Which shirt is lighter and more comfortable?",opts:["The checked cotton shirt","The plain blue linen shirt","The floral silk shirt"],a:1},
+{q:"Why doesn't Leo choose the leather jacket?",opts:["It looks too casual","It is too tight","It is damaged"],a:0},
+{q:"What does Leo finally choose?",opts:["A hoodie and jeans","A wool jumper and shorts","A linen shirt, dark trousers and clean shoes"],a:2}
+],
+f:[
+{q:"She is wearing a ___ cotton T-shirt with no design.",opts:["plain","striped","floral"],a:0},
+{q:"My brother bought a ___ shirt with blue and white squares.",opts:["checked","polka-dot","silk"],a:0},
+{q:"This coat is made ___ wool.",opts:["by","of","with"],a:1},
+{q:"The shoes ___ comfortable, but they're too small.",opts:["look","looks","looking"],a:0},
+{q:"That jacket really ___ you.",opts:["fit","suit","suits"],a:2},
+{q:"I want to ___ these jeans before buying them.",opts:["try on","wear on","look on"],a:0},
+{q:"For college, I prefer ___ clothes because I want to feel relaxed.",opts:["casual","leather","checked"],a:0},
+{q:"These trousers are too ___ around the waist.",opts:["loose","tight","floral"],a:1},
+{q:"It's cold, so I'll wear a ___ shirt.",opts:["short-sleeved","long-sleeved","polka-dot"],a:1},
+{q:"A jacket can ___ well but still not ___ your style.",opts:["fit / suit","suit / fit","look / wear"],a:0}
+]
+};
+function choose(key,val){
+ answers[key]=val;delete checked[key];
+ document.querySelectorAll(`[data-q="${key}"]`).forEach(b=>{
+ b.classList.remove("chosen","correct","wrong");
+ if(+b.dataset.val===val)b.classList.add("chosen");
+ });
+ document.getElementById("f_"+key).textContent="";
+}
+function checkQuiz(id){
+ let score=0;
+ quizzes[id].forEach((q,i)=>{
+ const key=id+"_"+i, chosen=answers[key];
+ checked[key]=chosen===q.a;
+ if(checked[key])score++;
+ document.querySelectorAll(`[data-q="${key}"]`).forEach(b=>{
+ b.classList.remove("chosen","correct","wrong");
+ const v=+b.dataset.val;
+ if(v===q.a)b.classList.add("correct");
+ else if(v===chosen)b.classList.add("wrong");
+ });
+ const f=document.getElementById("f_"+key);
+ f.className="feedback "+(checked[key]?"good":"bad");
+ f.textContent=checked[key]?"✓ Correct!":"Correct answer: "+q.opts[q.a];
+ });
+ document.getElementById("result_"+id).innerHTML=
+ `<strong>Score: ${score} / ${quizzes[id].length}</strong>`;
+ updateProgress();
+}
+function resetQuiz(id){
+ quizzes[id].forEach((q,i)=>{
+ const key=id+"_"+i;delete answers[key];delete checked[key];
+ document.querySelectorAll(`[data-q="${key}"]`).forEach(b=>
+ b.classList.remove("chosen","correct","wrong"));
+ document.getElementById("f_"+key).textContent="";
+ });
+ document.getElementById("result_"+id).textContent="";
+ updateProgress();
+}
+function updateProgress(){
+ const all=Object.values(quizzes).reduce((n,q)=>n+q.length,0);
+ const right=Object.values(checked).filter(Boolean).length;
+ document.getElementById("progressText").textContent=right+" / "+all;
+ document.getElementById("bar").style.width=(right/all*100)+"%";
+}
+function makeSection(id,html){
+ const s=el("section");s.id=id;s.innerHTML=html;
+ document.getElementById("sections").appendChild(s);
+}
+function readingText(){
+ return `<div class="card">
+ <h2>The Right Outfit</h2>
+ <p class="sub">Read about Leo, a college student preparing for an important presentation.</p>
+ <div class="reading">
+ On Thursday, Leo has to present his college project to a group of local employers.
+ He wants to look smart, but he doesn't want to feel uncomfortable.
+ He usually wears casual clothes: a loose hoodie, a plain T-shirt and denim jeans.
+ <br><br>
+ For the presentation, he decides to try on something different.
+ First, Leo finds a checked cotton shirt. He likes the pattern,
+ but the sleeves are too long and the shirt doesn't fit well.
+ Next, he tries on a plain blue linen shirt. It is lighter and more comfortable
+ than the checked one. The colour also suits him.
+ <br><br>
+ He considers a fashionable leather jacket, but it looks too casual for the event.
+ A wool jumper is another option, although the room might be warm.
+ His friend Maya suggests a fitted jacket and dark trousers.
+ Leo tries on the jacket. It fits perfectly, but he thinks it looks
+ a little too formal for a college presentation.
+ <br><br>
+ In the end, he chooses the blue linen shirt, dark trousers and clean shoes.
+ He feels confident because the outfit looks smart without being uncomfortable.
+ He also decides to keep his usual denim jeans for the weekend.
+ </div></div>`;
+}
+const summary=[
+["Leo usually wears","casual",["smart","casual","tight"],"clothes."],
+["He tries a","checked",["checked","floral","plain"],"shirt, but it does not fit."],
+["A blue","linen",["wool","leather","linen"],"shirt feels better."],
+["The colour","suits",["fits","suits","wears"],"him."],
+["A jacket","fits",["looks","fits","wears"],"perfectly."],
+["He chooses an outfit that looks","smart",["smart","floral","tight"],"."]
+];
+function summaryHTML(){
+ return `<div class="card"><h2>Complete the Summary</h2>
+ <p class="sub">Choose the correct expression for each gap.</p>
+ ${summary.map((x,i)=>`<p class="sentence">${i+1}. ${x[0]}
+ <select id="gap${i}"><option value="">Choose...</option>
+ ${x[2].map(o=>`<option value="${o}">${o}</option>`).join("")}
+ </select> ${x[3]}</p>`).join("")}
+ <button onclick="checkSummary()">Check the text ✓</button>
+ <div id="summaryResult" class="feedback"></div></div>`;
+}
+function checkSummary(){
+ let score=0;
+ summary.forEach((x,i)=>{
+ const s=document.getElementById("gap"+i);
+ const good=s.value===x[1];
+ if(good)score++;
+ s.style.borderColor=good?"#1b9b63":"#d65268";
+ });
+ document.getElementById("summaryResult").textContent=
+ `Score: ${score}/${summary.length}. `+
+ (score===summary.length?"Excellent!":"Try again. Green borders show correct answers.");
+}
+function flashcardsHTML(){
+ const all=[...patterns,...materials,...styles];
+ return `<div class="card"><h2>Memory Cards</h2>
+ <p class="sub">Read the Russian meaning. Say the English word before revealing it.</p>
+ <div id="flashcard" class="notice" style="text-align:center;min-height:135px"></div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap">
+ <button onclick="revealCard()">Show English</button>
+ <button class="secondary" onclick="nextCard()">Next card →</button>
+ </div></div>`;
+}
+let flashIndex=0,flashShown=false;
+function drawFlash(){
+ const all=[...patterns,...materials,...styles];
+ const item=all[flashIndex%all.length];
+ const box=document.getElementById("flashcard");
+ if(!box)return;
+ box.innerHTML=`<div class="ru">CARD ${flashIndex+1} / ${all.length}</div>
+ <h2>${esc(item[1])}</h2>`+
+ (flashShown?`<h2 style="color:#008e95">${esc(item[0])}</h2>
+ <p>${esc(item[2])}</p>`:"<p>Can you remember the English?</p>");
+}
+function revealCard(){flashShown=true;drawFlash()}
+function nextCard(){
+ const all=[...patterns,...materials,...styles];
+ flashIndex=(flashIndex+1)%all.length;
+ flashShown=false;drawFlash();
+}
+function init(){
+ const nav=document.getElementById("nav");
+ tabs.forEach(([id,label])=>{
+ const b=el("button","secondary",label);b.dataset.id=id;
+ b.onclick=()=>showTab(id);nav.appendChild(b);
+ });
+ makeSection("patterns",
+ makeCard("Patterns — рисунки на одежде",
+ `<p class="sub">Look at the patterns and learn the whole phrases.</p>`+
+ vocabularyTiles(patterns)+
+ `<div class="notice"><b>Remember:</b> a striped shirt • a checked shirt •
+ a plain T-shirt • a polka-dot dress</div>`)+
+ makeQuiz("p","Pattern Check",quizzes.p));
+ makeSection("materials",
+ makeCard("Materials — из чего сделана одежда",
+ vocabularyTiles(materials)+
+ `<div class="notice"><b>Useful language:</b><br>
+ It's made of cotton.<br>
+ She's wearing a leather jacket.<br>
+ I've got a pair of denim jeans.</div>`)+
+ makeQuiz("m","Material Check",quizzes.m));
+ makeSection("style",
+ makeCard("Fit & Style",
+ `<div class="grid">${styles.map(x=>`
+ <div class="tile"><div class="inside"><h3>${esc(x[0])}</h3>
+ <div class="ru">${esc(x[1])}</div><p>${esc(x[2])}</p>
+ </div></div>`).join("")}</div>`)+
+ makeQuiz("s","Style Check",quizzes.s));
+ makeSection("verbs",
+ makeCard("Fit, Suit, Look, Wear & Try On",
+ `<div class="notice">
+ <p><b>FIT</b> — подходит по размеру.<br>These jeans don't fit me.</p>
+ <p><b>SUIT</b> — идёт человеку.<br>That colour really suits you.</p>
+ <p><b>LOOK</b> — выглядеть.<br>You look smart.</p>
+ <p><b>WEAR</b> — носить одежду.<br>I usually wear jeans.</p>
+ <p><b>TRY ON</b> — примерять.<br>Can I try on this jacket?</p>
+ </div>
+ <p><b>Important:</b> A jacket can fit you but not suit you!</p>`)+
+ makeQuiz("v","Choose the Correct Verb",quizzes.v));
+ makeSection("reading",
+ readingText()+
+ makeQuiz("r","Reading Comprehension",quizzes.r)+summaryHTML());
+ makeSection("review",
+ flashcardsHTML()+
+ makeQuiz("f","Final Vocabulary Challenge",quizzes.f)+
+ makeCard("Your B1 Speaking Challenge",
+ `<p><b>Describe your ideal college outfit.</b></p>
+ <p>Try to use at least:</p>
+ <ul><li>2 pattern or material words</li>
+ <li>2 style adjectives</li>
+ <li>fit, suit or look</li>
+ <li>one reason with because</li></ul>
+ <div class="notice">
+ <b>Model:</b><br>
+ I usually wear a plain cotton T-shirt and loose denim jeans to college.
+ I prefer casual clothes because they're comfortable.
+ If I have an important presentation, I choose a smart shirt.
+ I like blue because it suits me.
+ </div>
+ <p><b>Say your own version aloud.</b> Don't just read the model.</p>`)+
+ `<div class="card"><button class="yellow" onclick="restart()">Reset all quiz answers</button></div>`);
+ showTab("patterns");drawFlash();updateProgress();
+}
+function restart(){
+ if(!confirm("Clear all quiz answers?"))return;
+ Object.keys(quizzes).forEach(resetQuiz);
+ document.querySelectorAll("select").forEach(s=>{
+ s.value="";s.style.borderColor="";
+ });
+ document.getElementById("summaryResult").textContent="";
+ showTab("patterns");
+}
+init();
+</script>
+</body>
+</html>
